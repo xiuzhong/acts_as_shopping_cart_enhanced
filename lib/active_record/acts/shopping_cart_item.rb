@@ -20,7 +20,7 @@ module ActiveRecord
           self.send :include, ActiveRecord::Acts::ShoppingCartItem::InstanceMethods
           belongs_to :owner, :polymorphic => true
           belongs_to :item, :polymorphic => true
-          monetize :price_cents
+          monetize :price_cents, :allow_nil => true, :numericality => {:greater_than_or_equal_to => 0}, :with_model_currency => :price_currency
         end
 
         #
